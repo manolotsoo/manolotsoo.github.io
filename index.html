@@ -6,7 +6,13 @@
   <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
   <title>Manolotsoa - portfolio</title>
   <link rel="stylesheet" href="assets/css/flowbite.min.css">
-
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- script -->
+  <script src="https://kit.fontawesome.com/b40d0c3279.js" crossorigin="anonymous"></script>
+  <script src="assets/js/flowbite.min.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.validate.min.js"></script>
+  <script src="assets/js/tilt.jquery.min.js"></script>
 </head>
 
 <body class="flex flex-col justify-between h-screen">
@@ -50,7 +56,7 @@
   "<span class="text-blue-400">passions</span>": [
     "<span class="text-green-400">codage</span>",
     "<span class="text-green-400">développement d'application</span>"
-    ]
+  ]
 }</pre>
           </code>
       </div>
@@ -874,30 +880,52 @@
         </h2>
         <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Vous avez besoin de
           me contacter?</p>
-        <form action="#" class="space-y-8">
+        <form id="form-contact" action="#" class="space-y-8">
           <div>
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
-            <input type="email" id="email"
-              class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-              placeholder="name@flowbite.com" required>
+            <input type="email" name="email" id="email"
+              class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:shadow-sm-light">
           </div>
           <div>
             <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sujet</label>
-            <input type="text" id="subject"
-              class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-              placeholder="Let us know how we can help you" required>
+            <input type="text" id="subject" name="subject"
+              class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:shadow-sm-light">
           </div>
           <div class="sm:col-span-2">
             <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Votre
               message</label>
-            <textarea id="message" rows="6"
-              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Leave a comment..."></textarea>
+            <textarea id="message" rows="6" name="message"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"></textarea>
           </div>
           <button type="submit"
             class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-600">Envoyer le
             message</button>
         </form>
+      </div>
+
+
+      <div id="toast-success"
+        class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed top-5 right-5"
+        role="alert">
+        <div
+          class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            viewBox="0 0 20 20">
+            <path
+              d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+          </svg>
+          <span class="sr-only">Check icon</span>
+        </div>
+        <div class="ms-3 text-sm font-normal">Item moved successfully.</div>
+        <button type="button"
+          class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+          data-dismiss-target="#toast-success" aria-label="Close">
+          <span class="sr-only">Close</span>
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+        </button>
       </div>
     </section>
   </div>
@@ -917,13 +945,73 @@
       </div>
     </div>
   </footer>
-
-  <!-- about section ends -->
-  <!-- script -->
-  <script src="https://kit.fontawesome.com/b40d0c3279.js" crossorigin="anonymous"></script>
-  <script src="assets/js/flowbite.min.js"></script>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/tilt.jquery.min.js"></script>
+  <script>
+    function isEmail(email) {
+      const EmailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return EmailRegex.test(email);
+    }
+    $.validator.addMethod("isEmail", function (value, element) {
+      return this.optional(element) || isEmail(value);
+    }, "Entrez un email valide");
+    $(document).ready(function () {
+      $.get("https://angularmbdsback-i02y.onrender.com/api/mock", function (response, status) {
+        if (response?.data?.ok) {
+          $("#toast-success").show();
+        }
+      });
+      $('#form-contact').validate({
+        errorElement: "span",
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass(errorClass).removeClass(validClass);
+          $(element.form).find("label[for=" + element.id + "]")
+            .addClass(errorClass);
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass(errorClass).addClass(validClass);
+          $(element.form).find("label[for=" + element.id + "]")
+            .removeClass(errorClass);
+        },
+        rules: {
+          email: {
+            required: true,
+            isEmail: true,
+            email: true
+          },
+          subject: {
+            required: true,
+          },
+          message: {
+            required: true
+          }
+        },
+        messages: {
+          email: {
+            required: 'Le champ email est requis!',
+            isEmail: 'Veuillez entrer un email valide',
+            email: 'Veuillez entrer un email valide',
+          },
+          subject: {
+            required: 'Le champ sujet est requis!'
+          },
+          message: {
+            required: 'Le champ message est requis!'
+          }
+        },
+        submitHandler: function (form, event) {
+          // This function will be called when the form is valid
+          // You can submit the form via Ajax or perform other actions
+          // For example:
+          // $(form).ajaxSubmit();
+          event.preventDefault();
+          console.log('Form submitted! ', $('#form-contact').val());
+          const email = $('#form-contact').find('input[name="email"]').val();
+          const subject = $('#form-contact').find('input[name="subject"]').val();
+          const message = $('#form-contact').find('textarea[name="message"]').val();
+          console.log({ email, subject, message });
+        }
+      });
+    })
+  </script>
 </body>
 
 </html>
