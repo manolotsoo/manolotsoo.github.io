@@ -905,7 +905,7 @@
 
 
       <div id="toast-success"
-        class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed top-5 right-5"
+        class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed top-5 right-5 hidden"
         role="alert">
         <div
           class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -916,7 +916,7 @@
           </svg>
           <span class="sr-only">Check icon</span>
         </div>
-        <div class="ms-3 text-sm font-normal">Item moved successfully.</div>
+        <div class="ms-3 text-sm font-normal">Votre message a été envoyé avec succès.</div>
         <button type="button"
           class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
           data-dismiss-target="#toast-success" aria-label="Close">
@@ -954,11 +954,11 @@
       return this.optional(element) || isEmail(value);
     }, "Entrez un email valide");
     $(document).ready(function () {
-      $.get("https://angularmbdsback-i02y.onrender.com/api/mock", function (response, status) {
-        if (response?.data?.ok) {
-          $("#toast-success").show();
-        }
-      });
+      // $.get("https://angularmbdsback-i02y.onrender.com/api/mock", function (response, status) {
+      //   if (response?.data?.ok) {
+      //     $("#toast-success").show();
+      //   }
+      // });
       $('#form-contact').validate({
         errorElement: "span",
         highlight: function (element, errorClass, validClass) {
@@ -998,16 +998,16 @@
           }
         },
         submitHandler: function (form, event) {
-          // This function will be called when the form is valid
-          // You can submit the form via Ajax or perform other actions
-          // For example:
-          // $(form).ajaxSubmit();
           event.preventDefault();
-          console.log('Form submitted! ', $('#form-contact').val());
-          const email = $('#form-contact').find('input[name="email"]').val();
+          const fromEmail = $('#form-contact').find('input[name="email"]').val();
           const subject = $('#form-contact').find('input[name="subject"]').val();
-          const message = $('#form-contact').find('textarea[name="message"]').val();
-          console.log({ email, subject, message });
+          const text = $('#form-contact').find('textarea[name="message"]').val();
+          $.post("https://github-portfolio-service.onrender.com/api/send/mail", { fromEmail, subject, text }, function (response, status) {
+            if (response.data.ok) {
+              $("#toast-success").removeClass("hidden");
+              $('#form-contact')[0].reset();
+            }
+          })
         }
       });
     })
