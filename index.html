@@ -898,7 +898,7 @@
             <textarea id="message" rows="6" name="message"
               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"></textarea>
           </div>
-          <button type="submit"
+          <button id="btnSend" type="submit"
             class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-600">Envoyer le
             message</button>
         </form>
@@ -1020,15 +1020,21 @@
           const fromEmail = $('#form-contact').find('input[name="email"]').val();
           const subject = $('#form-contact').find('input[name="subject"]').val();
           const text = $('#form-contact').find('textarea[name="message"]').val();
+          $("#btnSend").html("Envoi...");
+
           $.post("https://github-portfolio-service.onrender.com/api/send/mail", { fromEmail, subject, text }, function (response, status) {
             if (response.data.ok) {
+              $("#btnSend").html("Envoyer le message");
               $("#toast-success").removeClass("hidden");
               $('#form-contact')[0].reset();
             }
           }).fail(function () {
             $("#toast-error").removeClass("hidden");
             $("#toast-error").removeClass("opacity-0");
-          });
+            $("#btnSend").html("Envoyer le message");
+          })
+          setTimeout(() => {
+          }, 3000);
         }
       });
     })
