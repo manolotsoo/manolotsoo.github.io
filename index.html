@@ -77,7 +77,7 @@
         <div class="w-full grid grid-cols-1 md:grid-cols-4 divide-x gap-3">
           <div class="min-w-80">
             <!-- typescript -->
-            <div data-tooltip-target="tooltip-typescript" onclick="toggleTooltip(this)"
+            <div data-tooltip-target="tooltip-typescript"
               class="h-full block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <div class="grid grid-cols-2">
                 <div class="flex justify-start">
@@ -976,16 +976,6 @@
     $.validator.addMethod("isEmail", function (value, element) {
       return this.optional(element) || isEmail(value);
     }, "Entrez un email valide");
-    function toggleTooltip(element) {
-      if (element.nextElementSibling.classList.contains("visible")) {
-        alert("we make it visible");
-        return;
-      }
-      else {
-        element.nextElementSibling.classList.add("visible");
-      }
-    }
-
     $(document).ready(function () {
       $('#form-contact').validate({
         errorElement: "span",
